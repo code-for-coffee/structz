@@ -1,6 +1,6 @@
 {
   "name": "structz",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ES2015 Class versions of a Node and Tree data structure",
   "main": "dist/index.js",
   "module": "src/index.js",
