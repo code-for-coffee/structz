@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Home - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Structz.Node.html">Node</a><ul class='methods'><li data-type='method'><a href="Structz.Node.html#append">append</a></li><li data-type='method'><a href="Structz.Node.html#hasChildren">hasChildren</a></li><li data-type='method'><a href="Structz.Node.html#isRoot">isRoot</a></li><li data-type='method'><a href="Structz.Node.html#toString">toString</a></li></ul></li><li><a href="Tree.html">Tree</a><ul class='methods'><li data-type='method'><a href="Tree.html#.map">map</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="Structz.html">Structz</a></li></ul>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section class="readme">
+        <article><h1>structz</h1><p>ES2015 Class versions of a Node and Tree</p>
+<p><a href="https://travis-ci.org/code-for-coffee/structz"><img src="https://travis-ci.org/code-for-coffee/structz.svg?branch=master" alt="Build Status"></a> <a href="https://codecov.io/gh/code-for-coffee/structz"><img src="https://codecov.io/gh/code-for-coffee/structz/branch/master/graph/badge.svg" alt="codecov"></a></p>
+<h2>Install</h2><p><code>npm install structz</code> or <code>yarn add structz</code></p>
+<p><strong>ES Module</strong></p>
+<pre class="prettyprint source"><code>import { Node, Tree } from 'structz';</code></pre><p><strong>CJS</strong></p>
+<pre class="prettyprint source lang-js"><code>const Structz = require('structz'),
+  Node = Structz.Node,
+  Tree = Structz.Tree;</code></pre><h2>Getting Started</h2><p>After importing the library, you can create as many nodes as you'd like.</p>
+<pre class="prettyprint source lang-js"><code>let rootSoilNode = new Node('soil');
+let fertilizerChildNode = new Node('fertilizer');
+let waterChildNode = new Node('h2o');</code></pre><p>The <code>new Node()</code> constructor accepts an argument of any Javascript type.</p>
+<p>You can append child nodes to a root node like so:</p>
+<pre class="prettyprint source lang-js"><code>rootSoilNode.append(fertilizerChildNode);
+rootSoilNode.append(waterChildNode);</code></pre><p>You can detect if a <code>Node</code> is a root or not as well.</p>
+<pre class="prettyprint source lang-js"><code>rootSoilNode.isRoot(); // -> true
+waterChildNode.isRoot(); // -> false</code></pre><p>Accessing child nodes is simple.</p>
+<pre class="prettyprint source lang-js"><code>rootSoilNode.children // returns [fertilizerChildNode, waterChildNode]</code></pre><p>You can perform immutable operations on the <code>Node</code> data structure using the <code>Tree</code> class. You instantiate it with a <em>root</em> Node.</p>
+<pre class="prettyprint source lang-js"><code>let rootNode = new Node(1);
+rootNode.append(new Node(2));
+let newRootNode = Tree.map(rootNode, (node) => {
+  return node + 10;
+}); // this returns a `new Tree()` with the newly created `Node` as the `.root` value.
+newRootNode.root // returns Node of modified type
+// in this case, our new structure looks like:
+[11] (root)
+|
+[12] (child)</code></pre><h1>Documentation</h1><p>See <code>docs/index.html</code> for up to date documentation.</p>
+<p><a name="Node"></a></p>
+<h2>Node</h2><p>Class representing a Node data structure type</p>
+<p><strong>Kind</strong>: global class  </p>
+<ul>
+<li><a href="#Node">Node</a><ul>
+<li><a href="#Node+children">.children</a> ⇒ <code>Array</code></li>
+<li><a href="#Node+value">.value</a> ⇒ <code>*</code></li>
+<li><a href="#Node+value">.value</a></li>
+<li><a href="#Node+isRoot">.isRoot()</a> ⇒ <code>boolean</code></li>
+<li><a href="#Node+hasChildren">.hasChildren()</a> ⇒ <code>boolean</code></li>
+<li><a href="#Node+append">.append(child)</a> ⇒ <a href="#Node"><code>Node</code></a></li>
+<li><a href="#Node+toString">.toString()</a> ⇒ <code>string</code></li>
+</ul>
+</li>
+</ul>
+<p><a name="Node+children"></a></p>
+<h3>node.children ⇒ <code>Array</code></h3><p>Returns an array of child nodes.</p>
+<p><strong>Kind</strong>: instance property of <a href="#Node"><code>Node</code></a><br><a name="Node+value"></a></p>
+<h3>node.value ⇒ <code>*</code></h3><p>Returns the value of the this.attributes.</p>
+<p><strong>Kind</strong>: instance property of <a href="#Node"><code>Node</code></a><br><a name="Node+value"></a></p>
+<h3>node.value</h3><p>Sets the value of this.attributes.</p>
+<p><strong>Kind</strong>: instance property of <a href="#Node"><code>Node</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>attribute</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Node+isRoot"></a></p>
+<h3>node.isRoot() ⇒ <code>boolean</code></h3><p>Detects if this Node is a parent node or not.</p>
+<p><strong>Kind</strong>: instance method of <a href="#Node"><code>Node</code></a><br><a name="Node+hasChildren"></a></p>
+<h3>node.hasChildren() ⇒ <code>boolean</code></h3><p>Detects if this node has children or not.</p>
+<p><strong>Kind</strong>: instance method of <a href="#Node"><code>Node</code></a><br><a name="Node+append"></a></p>
+<h3>node.append(child) ⇒ <a href="#Node"><code>Node</code></a></h3><p>Appends a child Node to this Node.</p>
+<p><strong>Kind</strong>: instance method of <a href="#Node"><code>Node</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>child</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Node+toString"></a></p>
+<h3>node.toString() ⇒ <code>string</code></h3><p>Returns a String that represents this Node.</p>
+<p><strong>Kind</strong>: instance method of <a href="#Node"><code>Node</code></a></p>
+<h2>Classes</h2><dl>
+<dt><a href="#Tree">Tree</a></dt>
+<dd><p>Class representing a Tree data structure type that contains a Root node</p>
+</dd>
+</dl>
+
+<p><a name="Tree"></a></p>
+<h2>Tree</h2><p>Class representing a Tree data structure type that contains a Root node</p>
+<p><strong>Kind</strong>: global class  </p>
+<ul>
+<li><a href="#Tree">Tree</a><ul>
+<li><a href="#new_Tree_new">new Tree(root)</a></li>
+<li><em>instance</em><ul>
+<li><a href="#Tree+root">.root</a> ⇒ <code>*</code></li>
+</ul>
+</li>
+<li><em>static</em><ul>
+<li><a href="#Tree.map">.map(node, func, tree)</a> ⇒ <code>*</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><a name="new_Tree_new"></a></p>
+<h3>new Tree(root)</h3><p>Instantiates a Node as a Binary Tree</p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>root</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Tree+root"></a></p>
+<h3>tree.root ⇒ <code>*</code></h3><p>Returns the root of the Node.</p>
+<p><strong>Kind</strong>: instance property of <a href="#Tree"><code>Tree</code></a><br><a name="Tree.map"></a></p>
+<h3>Tree.map(node, func, tree) ⇒ <code>*</code></h3><p>Performs a function on a Node with the provided function and returns the output. Optionally accepts a Tree to perform this otherwise a new Tree is instantiated and returned (breaks immutability).</p>
+<p><strong>Kind</strong>: static method of <a href="#Tree"><code>Tree</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node</td>
+<td></td>
+</tr>
+<tr>
+<td>func</td>
+<td></td>
+</tr>
+<tr>
+<td>tree</td>
+<td><code></code></td>
+</tr>
+</tbody>
+</table>
+<h2>Current Test Coverage</h2><pre class="prettyprint source lang-bash"><code>> structz@1.0.0 test ~/github/structz
+> nyc mocha
+
+  A Node data structure
+    ✓ Can instantiate a new Node
+    ✓ Returns [] children if empty
+    ✓ Returns [] children if not empty
+    ✓ successfully can append a child
+    ✓ returns false if there are no children
+    ✓ returns true if there are children
+    ✓ can return its own value
+    ✓ can set its own value
+    ✓ can output itself as a String
+
+  A Tree data structure type that contains a Root node data structure
+    ✓ can instantiate itself
+    ✓ returns the root Node
+    ✓ maps over a Node
+
+
+  12 passing (12ms)
+
+----------|----------|----------|----------|----------|-------------------|
+File      |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+----------|----------|----------|----------|----------|-------------------|
+All files |    88.46 |    71.43 |    91.67 |       92 |                   |
+ Node.js  |       80 |        0 |     87.5 |    85.71 |             23,24 |
+ Tree.js  |      100 |      100 |      100 |      100 |                   |
+----------|----------|----------|----------|----------|-------------------|</code></pre><h2>Changelog</h2><ul>
+<li><em>1.0.0-rc.0</em> - Preparing initial release</li>
+<li><em>0.2.4</em> - Updated JSDoc Generation</li>
+<li><em>0.2.3</em> - Updated README with starter guide</li>
+<li><em>0.2.2</em> - Docs updated</li>
+<li><em>0.2.1</em> - Corrected bug with exports</li>
+<li><em>0.2.0</em> - Changed package structure for modularity</li>
+<li><em>0.1.1</em> - Added Test Coverage</li>
+<li><em>0.1.0</em> - Initial release.</li>
+</ul></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Sep 16 2018 23:10:18 GMT-0500 (CDT) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

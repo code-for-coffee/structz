@@ -1,0 +1,40 @@
+{
+  "name": "structz",
+  "version": "1.0.0",
+  "description": "ES2015 Class versions of a Node and Tree data structure",
+  "main": "dist/index.js",
+  "module": "src/index.js",
+  "scripts": {
+    "gen-docs": "cat CHANGELOG.md >> README.md && node_modules/.bin/jsdoc src/ -d docs/ -t node_modules/docdash/ --readme README.md",
+    "test": "nyc mocha",
+    "transpile-es2015": "babel src/ -d dist"
+  },
+  "keywords": [
+    "node",
+    "linked",
+    "list",
+    "structz",
+    "data",
+    "structures"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/code-for-coffee/structz.git"
+  },
+  "author": "code-for-coffee",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.0.1",
+    "docdash": "^0.4.0",
+    "jsdoc": "^3.5.5",
+    "mocha": "^5.2.0",
+    "nyc": "^13.0.1"
+  }
+}
